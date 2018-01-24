@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>高德地图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="../../css/my.css">
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/function.js"></script>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../js/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>高德地图</p>
+		<p class='line1'></p>
+	</div>
+	<div class='acard'>
+		<a href="#getmap">引入地图</a>
+		<a href="#inimap">地图初始化</a>
+		<a href="#createmarker">创建标注</a>
+		<a href="#getevent">获取点击地图经纬度</a>
+		<a href="#getlocation">获取位置</a>
+		<a href="#addevent">添加事件</a>
+		<a href="#createicon">创建图片对象</a>
+		<a href="#removemarker">移除标记</a>
+		<a href="#drawline">添加折线</a>
+		<a href="#addinfo">自定义信息窗体</a>
+		<a href="#clearmap">清空地图覆盖物</a>
+		<a href="#getdistance">计算距离</a>
+		<a href="#note1">添加工具条</a>
+	</div>
+
+<div id='getmap' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>引入地图：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+<!-- <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.2&key=ead17936ec86c2d836b0dc6455a7c2a4&plugin=AMap.Autocomplete"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>  // 自动添加工具条 -->
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+	<div id='inimap' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>地图初始化：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var map = new AMap.Map('container', {
+    resizeEnable: true,
+    zoom:11,
+    center: [116.397428, 39.90923]
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='createmarker' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>创建标注：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+marker = new AMap.Marker({
+    icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+    position: [111.11, 11.11],
+    offset: new AMap.Pixel(-3, -20),  // 偏移量
+    map:map
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='getevent' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>获取点击地图经纬度：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var clickEventListener = map.on('click', function(e) {
+    alert(e.lnglat.getLng());
+    alert(e.lnglat.getLat());
+});
+marker.setMap(map);
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='getlocation' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>根据经纬度查询地址：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.plugin(["AMap.Geocoder"], function() {  // 引入模块
+    var geocoder = new AMap.Geocoder({
+        radius: 1000,
+        extensions: "all"
+    });
+    geocoder.getAddress([e.lnglat.getLng(),e.lnglat.getLat()], function(status, result) {
+        if (status === 'complete' && result.info === 'OK') {
+            $("#location").val(result.regeocode.formattedAddress);
+        }
+    });
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='addevent' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>添加事件：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+marker.on('mouseout', function(e) {
+    alert(e.lnglat.getLng());
+	alert(e.lnglat.getLat());
+	alert(e.pixel.getX());
+	alert(e.pixel.getY());
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='createicon' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>创建图片对象：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+new AMap.Icon({
+    size: new AMap.Size(25, 25),  //图标大小
+    image: "__IMG__/icon-che.png",
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='removemarker' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>移除标记：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.remove(marker);
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='drawline' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>添加折线：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var lineArr = [
+    [startLong,startLat],
+    [endLong,endLat]
+];
+var polyline = new AMap.Polyline({
+    path: lineArr,          //设置线覆盖物路径
+    strokeColor: "#00ffff", //线颜色
+    strokeOpacity: 1,       //线透明度
+    strokeWeight: 3,        //线宽
+    strokeStyle: "solid",   //线样式
+    strokeDasharray: [10, 5], //补充线样式
+    map:map
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='addinfo' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>自定义信息窗体：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var infoWindow = new AMap.InfoWindow({
+    isCustom: true,  // 使用自定义窗体
+    content: "<ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>",
+    offset: new AMap.Pixel(40,45)
+});
+AMap.event.addListener(marker, 'mouseover', function() {
+    infoWindow.open(map, marker.getPosition());  // 设置窗体的显示位置
+});
+AMap.event.addListener(marker, 'mouseout', function() {
+    infoWindow.close(map, marker.getPosition());
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='clearmap' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>清除地图上所有覆盖物：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.clearMap();
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='getdistance' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>计算距离：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var lnglat = new AMap.LngLat(116.368904, 39.923423);
+alert(lnglat.distance([116.387271, 39.922501]));
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>添加工具条：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.plugin(["AMap.ToolBar"],function(){
+	//加载工具条
+	var tool = new AMap.ToolBar({
+		position: 'LB'
+	});
+	map.addControl(tool);
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>位置数据：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+//左上角  LT  // 右上角  RT  // 左下角  LB  // 右下角  RB
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					注意有时候大写有用,有时候小写有用.(工具条位置大写有用)
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+
+</body>
+</html>

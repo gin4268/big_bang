@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>用法</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="../../css/my.css">
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../js/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>用法</p>
+		<p class='line1'></p>
+	</div>
+
+<div class='acard'>
+	<a href="#note1">在新窗口打开链接</a>
+	<a href="#note2">ajax请求</a>
+	<a href="#note3">定时器</a>
+	<a href="#note4">设置滚动条位置</a>
+	<a href="#note5">回到上一页</a>
+	<a href="#note6">刷新当前页面</a>
+	<a href="#note7">a链接事件触发</a>
+	<a href="#note8">保留小数</a>
+	<a href="#note9">获取dom</a>
+	<a href="#note10">Navigator对象</a>
+	<a href="#note11">加载外部js文件</a>
+	<a href="#note12">操作多选框</a>
+	<a href="#note13">删除最后一位字符</a>
+</div>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>在新窗口打开链接：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+<a href=''></a>
+window.open("https://uas.caac.gov.cn/login");
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>ajax请求：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+$.ajax({
+	url: url,
+	type: 'POST',
+	data: {
+		name : name,
+		password : psw
+	},
+	dataType:'json',
+	async:false,  // 同步
+	success: function (data) {
+	  alert(JSON.stringify(data));
+	},
+	error:function(data){
+		alert(JSON.stringify(data));
+	}
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note3' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>js定时器：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+var intval = setInterval("aa()",2000);
+window.clearInterval(intval);
+</pre>
+// 延时器
+<pre class="brush: c-sharp;">
+setTimeout("alert('我是个框框')",2000);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note4' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>设置滚动条位置：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+$("body").scrollTop(0);  // 跳转到body的页首
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note5' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>回到上一页：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+window.location.go(-1);
+</pre>
+<pre class="brush: c-sharp;">
+window.history.go(-1);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note6' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>刷新当前页面：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+location.reload();
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note7' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>a链接不跳转，改为事件触发：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+$('a').attr('href','javascript:void(0)');
+$('a').click(function(){
+});
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note8' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>保留小数：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+num.toFixed(2);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+				保留两位小数
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note9' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>获取dom：</div>
+	<div name='content' class='width2'>
+// 表单选择器
+<pre class="brush: c-sharp;">
+$(":input")  $("input[type='checkbox']")
+</pre>
+// 文本选择器
+<pre class="brush: c-sharp;">
+$(":text")
+</pre>
+// 获取选中的元素
+<pre class="brush: c-sharp;">
+$("input:checked")
+$("select option:selected")
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note10' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>Navigator对象：</div>
+	<div name='content' class='width2'>
+// 获得浏览器名称
+<pre class="brush: c-sharp;">
+var name = navigetor.appName;
+</pre>
+// 获得版本号
+<pre class="brush: c-sharp;">
+var version = navigator.appVersion;
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+				包括了浏览器的环境信息
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note11' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>加载外部js文件：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+<script src="js/1.js"></script>
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note12' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>操作多选框：</div>
+	<div name='content' class='width2'>
+// 设置多选框选中
+<pre class="brush: c-sharp;">
+dom.prop('checked','checked');
+</pre>
+// 取消多选框选择:
+<pre class="brush: c-sharp;">
+$('.deal_rate input:checkbox').prop("checked",false);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+				用attr设置无法消除手动点击选中的多选框
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<div id='note13' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>删除最后一位字符：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+str=str.substring(0,str.length-1);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p>
+
+<!-- <div id='note' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+</div>
+<p class='line2'></p> -->
+
+
+</body>
+</html>

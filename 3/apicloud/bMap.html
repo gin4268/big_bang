@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>bMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="../../css/my.css">
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="../../js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/function.js"></script>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="../../js/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../js/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>bMap</p>
+		<p class='line1'></p>
+	</div>
+	<div class='acard'>
+		<a href="#note1">移除覆盖物</a>
+		<a href="#note2">地图事件</a>
+		<a href="#note3">获取两点距离</a>
+		<a href="#note4">根据经纬度查找中文地址</a>
+		<a href="#note5">添加标注</a>
+		<a href="#note6">添加标注2</a>
+		<a href="#note7">移动标注</a>
+		<a href="#note8">获取标注</a>
+	</div>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>移除覆盖物：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.removeOverlay({
+	ids: [1, 2, 3, 4, 5]
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>地图事件：</div>
+		<div name='content' class='width2'>
+// 长按事件
+<pre class="brush: c-sharp;">
+map.addEventListener({
+	name: 'longPress'
+}, function(ret) {
+	if (ret.status) {
+		alert(JSON.stringify(ret));
+	}
+});
+</pre>
+// 地图拖动事件
+<pre class="brush: c-sharp;">
+map.addEventListener({
+	name: 'viewChange'
+}, function(ret) {
+	if (ret.status) {
+		alert(ret.lon+ret.lat);
+	}
+});
+</pre>
+// 添加点击事件
+<pre class="brush: c-sharp;">
+map.setBubble({
+	id: '100'+data[j].id,  // 覆盖物id
+	bgImg: 'widget://image/Image 1.png',  // 背景图片
+	content: {
+		title: '大标题',
+		subTitle: '概述内容',
+		illus: 'widget://image/Image 1.png'  // 边上的图片
+	},
+	styles: {
+		titleColor: '#000',
+		titleSize: 16,
+		subTitleColor: '#999',
+		subTitleSize: 12,
+		illusAlign: 'left'
+	}
+}, function(ret) {
+  if (ret) {
+	  alert(JSON.stringify(ret));
+  }
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note3' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>获取两点距离：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.getDistance({
+	start: {
+		lon: 106.486654,
+		lat: 29.490295
+	},
+	end: {
+		lon: 106.581515,
+		lat: 29.615467
+	}
+}, function(ret) {
+	if (ret.status) {
+		alert(ret.distance);
+	}
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					单位:米
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note4' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>根据经纬度查找中文地址：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.getNameFromCoords({
+	lon: 116.384767,
+	lat: 39.989539
+}, function(ret, err) {
+	if (ret.status) {
+		alert(JSON.stringify(ret));
+	}
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note5' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>添加标注：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.addAnnotations({
+	annotations: [{
+		id: 1,
+		lon: 116.297,
+		lat: 40.109
+	}, {
+		id: 2,
+		lon: 116.29,
+		lat: 40.109
+	}],
+	icon: 'widget://',
+	draggable: true
+}, function(ret) {
+	if (ret) {
+		alert(ret.id);
+	}
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					draggable表示可拖动(通过长按),此标注不可直接移动,可添加点击事件
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note6' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>添加标注2：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.addMobileAnnotations({
+	annotations: [{
+		id: 10,
+		lon: 116.297,
+		lat: 40.109,
+		icon: 'widget://image/bMap_car1.png'
+	}]
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					可旋转移动,不可直接添加点击事件
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note7' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>移动标注：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.moveAnnotation({
+    id: id,
+    duration: 6,
+    end: {
+        lon: 116.3843839609304,
+        lat: 39.98964439091298
+    }
+}, function(ret, err) {
+    alert(ret.id + '移动结束');
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					只能移动MobileAnnotations类型的标注
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note8' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>获取标注：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+map.getAnnotationCoords({
+	id: 2
+}, function(ret) {
+	if (ret) {
+		api.alert({ msg: JSON.stringify(ret) });
+	}
+});
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<!-- <div id='note' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p> -->
+
+
+</body>
+</html>
