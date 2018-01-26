@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>报错记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>报错记录</p>
+		<p class='line1'></p>
+	</div>
+
+<div class='acard'>
+	<a href="#1055">上传错误</a>
+	<a href="#replaceword">批量替换某个字段的某个字符串</a>
+</div>
+
+<div id='1055' name='contentcard1' class='width1'>
+<pre class="brush: c-sharp;">
+	call to a member function move() on null
+</pre>
+		<div name='content' class='width2'>
+			<div class='content1'>原因：在文件上传时出现,因为文件上传失败出现问题,用$_FILES查看错误信息是1,说明上传文件超过限制大小</div>
+			<div class='content1'>解决：如果使用Navicat，可F6进入命令行模式，输入
+				<pre class="brush: c-sharp;">
+					select @@GLOBAL.sql_mode;
+				</pre>
+				查看当前的设置，然后输入
+<pre class="brush: c-sharp;">
+set GLOBAL sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+</pre>
+				进行设置即可。
+			</div>
+			<div class='content1'>解释说明：</div>
+		</div>
+	</div>
+	<p class='line2'></p>
+
+
+
+
+</body>
+</html>

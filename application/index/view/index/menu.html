@@ -3,13 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>首页</title>
+    <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+</head>
 <body>
+<ul>
+	{volist name="info" id="vo" key="k"}
+		<li><a target='frame2' href="{:url($vo.control.'/'.$vo.action)}">{$vo.name}</a></li>
+	{/volist}
+</ul>
 </body>
-<script>
-	location.href='index/index/index';	
-</script>
 </html>

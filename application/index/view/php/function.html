@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>函数</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>函数</p>
+		<p class='line1'></p>
+	</div>
+
+<div class='acard'>
+	<a href="#note1">提取百度编辑器图片链接</a>
+	<a href="#note2">根据经纬度计算方位角</a>
+	<a href="#note3">根据经纬度计算距离</a>
+	<a href="#note4">限制文字长度</a>
+	<a href="#note5">判断是否手机登录</a>
+	<a href="#note6">经纬度转换成省份名</a>
+	<a href="#note7">curl请求函数</a>
+</div>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>提取百度编辑器图片链接：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+public function getpath(){
+	$path = '';
+	$path1 = str_replace($_SERVER['DOCUMENT_ROOT'],'',str_replace('\\', '/', realpath(dirname(__FILE__).'/../')));
+	$path1 = substr($path1,0,strpos($path1,"/",1)+1);  // 项目名
+	$content = trim(input('request.content'));
+	$content = str_replace($path1,"",$content);
+	$arr = explode('src=',$content);
+	$i = 0;
+	foreach ($arr as $key => $value) {
+		if(!$i){
+			$i++;
+			continue;
+		}
+		$arr2 = explode('"',$value);
+		$path .= $arr2[1].',';
+	}
+	return $path;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					保存百度编辑器上传的图片路径
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>根据经纬度计算方位角：</div>
+		<div name='content' class='width2'>
+// 根据经纬度计算方位角
+<pre class="brush: c-sharp;">
+function getangle($lat,$lat2,$lng,$lng2){
+	$lat22 = deg2rad($lat);
+	$lat1 = deg2rad($lat2);
+	$lng22 = deg2rad($lng);
+	$lng1 = deg2rad($lng2);
+	$azimuth = sin($lat1) * sin($lat22) + cos($lat1) * cos($lat22) * cos($lng22 - $lng1);
+	$azimuth = sqrt(1 - $azimuth * $azimuth);
+	$azimuth = cos($lat22) * sin($lng22 - $lng1) / $azimuth;
+	$azimuth = asin($azimuth) * 180 / M_PI;
+	if($lng22 < $lng1 && $lat22 > $lat1){
+		$azimuth = $azimuth + 360;
+	}else if($lng22 < $lng1 && $lat22 < $lat1){
+		$azimuth = -$azimuth + 180;
+	}else if($lng22 > $lng1 && $lat22 < $lat1){
+		$azimuth = 180 - $azimuth;
+	}
+	return $azimuth;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note3' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>根据经纬度计算距离：</div>
+		<div name='content' class='width2'>
+// 根据经纬度计算距离
+<pre class="brush: c-sharp;">
+function distance($lat1, $lon1, $lat2,$lon2,$radius = 6378.137){  
+    $rad = floatval(M_PI / 180.0);
+    $lat1 = floatval($lat1) * $rad;
+    $lon1 = floatval($lon1) * $rad;
+    $lat2 = floatval($lat2) * $rad;
+    $lon2 = floatval($lon2) * $rad;
+    $theta = $lon2 - $lon1;
+    $dist = acos(sin($lat1) * sin($lat2) +
+                cos($lat1) * cos($lat2) * cos($theta)
+            );
+    if ($dist < 0 ) {
+        $dist += M_PI;
+    }
+    return $dist = $dist * $radius * 100;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note4' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>限制文字长度：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+/* 限制文字长度,超出长度截取
+*($str)要判断的字符串
+*($len)限制长度
+*($sign)超出长度后添加此标记,默认为'...'
+ */
+function checklen($str,$len,$sign='...'){
+    if(mb_strlen($str,'utf-8')>$len){
+       return mb_substr($str, 0, $len,'utf-8').$sign;
+    }else{
+        return $str;
+    }
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note5' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>判断是否手机登录：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+function is_mobile_request()  {
+	$_SERVER['ALL_HTTP'] = isset($_SERVER['ALL_HTTP']) ? $_SERVER['ALL_HTTP'] : '';
+	$mobile_browser = '0';
+	if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|iphone|ipad|ipod|android|xoom)/i', strtolower($_SERVER['HTTP_USER_AGENT'])))
+	$mobile_browser++;
+	if((isset($_SERVER['HTTP_ACCEPT'])) and (strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') !== false))
+	$mobile_browser++;
+	if(isset($_SERVER['HTTP_X_WAP_PROFILE']))
+	$mobile_browser++;
+	if(isset($_SERVER['HTTP_PROFILE']))
+	$mobile_browser++;
+	$mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'],0,4));
+	$mobile_agents = array(
+	'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+	'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+	'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+	'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+	'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
+	'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+	'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+	'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+	'wapr','webc','winw','winw','xda','xda-'
+	);
+	if(in_array($mobile_ua, $mobile_agents))
+	$mobile_browser++;
+	if(strpos(strtolower($_SERVER['ALL_HTTP']), 'operamini') !== false)
+	$mobile_browser++;
+	// Pre-final check to reset everything if the user is on Windows
+	if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows') !== false)
+	$mobile_browser=0;
+	// But WP7 is also Windows, with a slightly different characteristic
+	if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone') !== false)
+	$mobile_browser++;
+	if($mobile_browser>0)
+	return true;
+	else
+	return false;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note6' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>经纬度转换成省份名：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+function geoToPro($lat='',$lng=''){
+    $geo=$lat.','.$lng;
+    $Url="http://api.map.baidu.com/geocoder/v2/?location=$geo&output=json&pois=0&ak=KxFw6U668u59IFgZt1OGWByKZrtmmgKl";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Url);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //如果把这行注释掉的话，就会直接输出
+    $result=curl_exec($ch);
+    curl_close($ch);
+    $infolist=json_decode($result);
+    return  $infolist->result->addressComponent->province;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note7' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>curl请求函数：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+public function http($url, $params, $method = 'GET', $header = array(), $multi = false){
+   $opts = array(
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_SSL_VERIFYPEER => false,
+      CURLOPT_SSL_VERIFYHOST => false,
+      CURLOPT_HTTPHEADER => $header
+   );
+   /* 根据请求类型设置特定参数 */
+   switch(strtoupper($method)){
+     case 'GET':
+        $opts[CURLOPT_URL] = $url . '?' . http_build_query($params);
+        $opts[CURLOPT_USERAGENT]='Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36';
+     break;
+     case 'POST':
+        //判断是否传输文件
+        $params = $multi ? $params : http_build_query($params);
+        $opts[CURLOPT_URL] = $url;
+        $opts[CURLOPT_POST] = 1;
+        $opts[CURLOPT_POSTFIELDS] = $params;
+     break;
+     default:
+        throw new Exception('不支持的请求方式！');
+   }
+   /* 初始化并执行curl请求 */
+   $ch = curl_init();
+   curl_setopt_array($ch, $opts);
+   $data = curl_exec($ch);
+   $error = curl_error($ch);
+   curl_close($ch);
+   if($error) throw new Exception('请求发生错误：' . $error);
+   return $data;
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					$params是参数数组
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<!-- <div id='note' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p> -->
+
+
+</body>
+</html>

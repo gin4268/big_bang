@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>内置标签</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>内置标签</p>
+		<p class='line1'></p>
+	</div>
+
+<div class='acard'>
+	<a href="#note1">if标签</a>
+	<a href="#note2">循环标签</a>
+	<a href="#note3">in标签</a>
+	<a href="#note4">empty标签</a>
+</div>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>if标签：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+{if condition="($io.state == 1)"}
+    <span style='color:green;'>已通过</span>
+{elseif condition="($io.state == 0)"/}
+    <span style='color:yellow;'>未审核</span>
+{else/}
+    <span style='color:red;'>未通过</span>
+{/if}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					if标签
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='redirect' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>跳转：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+$this->redirect();
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					控制器跳转
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>循环标签：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+{volist name="list" id="vo" key="k"}
+	{$k}:{$vo.name}
+{/volist}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					接受后台用$this->assign('info',$info)传递的数据,$k表示循环变量
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note3' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>in标签：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+{in name="id" value="1,2,3"}
+id在范围内
+{else/}
+id不在范围内
+{/in}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note4' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>empty标签：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+{empty name="name"}
+{else /}
+{/empty}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+</body>
+</html>

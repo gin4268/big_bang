@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+	<div name='title' class='top1'>
+		<p class='title1'>TP5</p>
+		<p class='line1'></p>
+	</div>
+
+<div class='acard'>
+	<a href="#note2">引入</a>
+	<a href="#redirect">跳转</a>
+	<a href="#note1">获取请求参数</a>
+	<a href="#note3">控制器</a>
+	<a href="#note4">页面传值</a>
+	<a href="#note5">session</a>
+	<a href="#note6">包含模板文件</a>
+</div>
+
+<div id='note2' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>引入：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+namespace app\index\controller;
+use app\admin\model\CloudUavcor;
+use think\Controller;
+use think\Db;
+use think\Request;
+use think\Session;
+use think\View;
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='redirect' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>跳转：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+$this->redirect();
+</pre>
+// 页面跳转传参
+<pre class="brush: c-sharp;">
+$this->redirect('report/index2',array('m_login'=>1));
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					控制器跳转
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note1' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>获取请求参数：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+$request=Request::instance()->param();
+</pre>
+// 判断请求类型
+<pre class="brush: c-sharp;">
+Request::instance()->isPost();
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note3' name='contentcard1' class='width1'>
+		<div name='littletitle' class='title2'>控制器：</div>
+		<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+class Admin extends Controller{
+	function _initialize(){
+    }
+}
+</pre>
+<pre class="brush: c-sharp;">
+class Action extends Admin{
+	public function _initialize(){
+        parent::_initialize();
+    }
+}
+</pre>
+			<div class='content1'>解释说明：
+				<div class='mark1'>
+					可创建公共控制器，其他控制器继承公共控制器，在公共控制器中写_initialize来抽离公共代码。
+				</div>
+			</div>
+		</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note4' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>页面传值：</div>
+	<div name='content' class='width2'>
+// 前台获取session
+<pre class="brush: c-sharp;">
+{$Think.session.fklogin}
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note5' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>session：</div>
+	<div name='content' class='width2'>
+// 获取session
+<pre class="brush: c-sharp;">
+Session::get('name');
+</pre>
+// 判断session是否存在
+<pre class="brush: c-sharp;">
+Session::has('name');
+</pre>
+// 删除session
+<pre class="brush: c-sharp;">
+Session::delete('name');
+session('name', null);
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note6' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>包含文件：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+{include file="side"/}
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+	</div>
+<p class='line2'></p>
+
+<div id='note7' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>获取表单的数组：</div>
+	<div name='content' class='width2'>
+// form表单传递数组
+<pre class="brush: c-sharp;">
+<input value='' type='hidden' name='planval[0]'/>
+</pre>
+// 获取表单传递的数组
+<pre class="brush: c-sharp;">
+$arr = input('post.planval/a');
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+	</div>
+<p class='line2'></p>
+
+<!-- <div id='note' name='contentcard1' class='width1'>
+	<div name='littletitle' class='title2'>：</div>
+	<div name='content' class='width2'>
+<pre class="brush: c-sharp;">
+
+</pre>
+		<div class='content1'>解释说明：
+			<div class='mark1'>
+			</div>
+		</div>
+	</div>
+	</div>
+<p class='line2'></p> -->
+
+</body>
+</html>
