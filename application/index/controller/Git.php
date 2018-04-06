@@ -3,31 +3,27 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Css extends Admin{
+class Git extends Admin{
 
     public function menu(){
         parent::menu();
         return view('admin/menu');
     }
 
-    public function used(){
+    public function uesd(){
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename1(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename2(){
-        return view('admin/page');
+    public function exception(){
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename3(){
-        return view('admin/page');
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename4(){
-        return view('admin/page');
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename5(){
@@ -35,22 +31,6 @@ class Css extends Admin{
     }
 
     public function pleaseinputpagename6(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename7(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename8(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename9(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename10(){
         return view('admin/page');
     }
 

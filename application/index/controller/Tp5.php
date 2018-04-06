@@ -3,7 +3,7 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Php extends Admin{
+class Tp5 extends Admin{
 
     public function _initialize(){
         parent::_initialize();
@@ -11,26 +11,26 @@ class Php extends Admin{
 
     public function menu(){
         parent::menu();
-    	return view('admin/menu');
+        return view('admin/menu');
     }
 
     public function used(){
-    	return view('admin/page');
+        return view('admin/page');
     }
 
-    public function string(){
-    	return view('admin/page');
+    public function pagesign(){
+        return view('admin/page');
     }
 
-    public function func(){
-    	return view('admin/page');
+    public function sql(){
+        return view('admin/page');
     }
 
     public function exception(){
-    	return view('admin/page');
+        return view('admin/page');
     }
 
-    public function file(){
+    public function pleaseinputpagename1(){
         return view('admin/page');
     }
 
@@ -66,7 +66,7 @@ class Php extends Admin{
         return view('admin/page');
     }
 
-    public function file0(){
+    public function pleaseinputpagename10(){
         return view('admin/page');
     }
 

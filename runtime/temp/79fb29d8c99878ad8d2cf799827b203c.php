@@ -1,0 +1,73 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:60:"D:\phpStudy\WWW\java/application/index\view\login\login.html";i:1522919785;}*/ ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<link rel="stylesheet" href="__CSS__/viewer.min.css">
+<script src="__JS__/viewer.min.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<body>
+	<div name='title' class='top1'>
+		<p class='title1'>登录</p>
+		<p class='line1'></p>
+	</div>
+
+	<div>
+		<form action="<?php echo url('login/loginin'); ?>" method='post' onsubmit="return check();">
+			用户名：<input type="text" id='username' name='username'>
+			密码：<input type="password" id='password' name='password'>	
+			<input type="submit" value='登录'>
+		</form>
+	</div>
+</body>
+<script>
+
+	// 检查表单
+	function check(){
+		var username = $('#username').val();
+		var password = $('#password').val();
+		if(username == null || username == '' || username == undefined){
+			alert('请输入用户名');
+			return false;
+		}
+		if(password == null || password == '' || password == undefined){
+			alert('请输入密码');
+			return false;
+		}
+	}
+</script>
+</html>

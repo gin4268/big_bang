@@ -3,7 +3,7 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Css extends Admin{
+class Unity extends Admin{
 
     public function menu(){
         parent::menu();
@@ -14,20 +14,16 @@ class Css extends Admin{
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename1(){
-        return view('admin/page');
-    }
-
     public function pleaseinputpagename2(){
-        return view('admin/page');
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename3(){
-        return view('admin/page');
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename4(){
-        return view('admin/page');
+    	return view('admin/page');
     }
 
     public function pleaseinputpagename5(){
@@ -35,22 +31,6 @@ class Css extends Admin{
     }
 
     public function pleaseinputpagename6(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename7(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename8(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename9(){
-        return view('admin/page');
-    }
-
-    public function pleaseinputpagename10(){
         return view('admin/page');
     }
 

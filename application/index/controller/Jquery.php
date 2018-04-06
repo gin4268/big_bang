@@ -2,31 +2,77 @@
 namespace app\index\controller;
 use think\Db;
 use think\Request;
-
+    
 class Jquery extends Admin{
 
     public function menu(){
-    	$request=Request::instance();
-    	$control = $request->controller();
-        $res = Db::table('cloud_menu')->where('pid',0)->where('control',$control)->find();
-    	$info = Db::table('cloud_menu')->where('pid',$res['id'])->where('control',$control)->select();
-    	$this->assign('info',$info);
-    	return view();
+        parent::menu();
+        return view('admin/menu');
     }
 
     public function used(){
-    	return view('use');
-    }
-
-    public function action(){
-    	return view('action');
-    }
-
-    public function note(){
-        return view('note');
+        return view('admin/page');
     }
 
     public function func(){
-        return view('function');
+        return view('admin/page');
+    }
+
+    public function note(){
+        return view('admin/page');
+    }
+
+    public function action(){
+        return view('admin/page');
+    }
+
+    public function getDom(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename2(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename3(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename4(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename5(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename6(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename7(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename8(){
+        return view('admin/page');
+    }
+
+    public function pleaseinputpagename9(){
+        return view('admin/page');
+    }
+
+    public function getDom0(){
+        return view('admin/page');
+    }
+
+    // 获取修改项数据
+    public function getchangedata(){
+        return parent::getchangedata();
+    }
+
+    // 删除操作
+    public function del(){
+        return parent::del();
     }
 }

@@ -210,6 +210,8 @@ return [
         'type'           => '',
         // 是否自动开启 SESSION
         'auto_start'     => true,
+        // 过期时间
+        'expire' => 3600,
     ],
 
     // +----------------------------------------------------------------------
@@ -246,11 +248,12 @@ return [
         '__IMG__'   =>dirname($_SERVER['SCRIPT_NAME']). '/public/static/img',
         '__ROOT__'  =>dirname($_SERVER['SCRIPT_NAME']). '/',
         '__U__'   =>dirname($_SERVER['SCRIPT_NAME']). '/index.php/admin',
-        '__UPLOAD__' =>dirname($_SERVER['SCRIPT_NAME']). '/public/uploads',
+        '__UPLOAD__' =>dirname($_SERVER['SCRIPT_NAME']). '/public/upload',
         '__INDEX__' =>dirname($_SERVER['SCRIPT_NAME']). '/index.php/index',
+        '__MYFILE__' =>dirname($_SERVER['SCRIPT_NAME']). '/public/file',
     ],
     
     //success和error跳转页面设置
-    'dispatch_error_tmpl' => 'public/404',
-    'dispatch_success_tmpl' => 'public/505',
+    /*'dispatch_error_tmpl' => 'public/404',
+    'dispatch_success_tmpl' => 'public/505',*/
 ];

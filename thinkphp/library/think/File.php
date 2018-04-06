@@ -360,7 +360,6 @@ class File extends SplFileObject
             $this->error = ['has the same filename: {:filename}', ['filename' => $filename]];
             return false;
         }
-
         /* 移动文件 */
         if ($this->isTest) {
             rename($this->filename, $filename);

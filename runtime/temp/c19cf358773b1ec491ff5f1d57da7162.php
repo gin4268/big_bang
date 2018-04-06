@@ -1,0 +1,90 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:65:"D:\phpStudy\WWW\java/application/index\view\file\filemanager.html";i:1522972768;}*/ ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文件管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="__JS__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__JS__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<link rel="stylesheet" href="__CSS__/viewer.min.css">
+<script src="__JS__/viewer.min.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '__JS__/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+<style>
+	.content-span{
+		display:inline-block;width:20%;height:24px;line-height:24px;float:left;text-align: center;
+	}
+</style>
+<body>
+	<div name='title' class='top1'>
+		<p class='title1'>文件管理</p>
+		<p class='line1'></p>
+	</div>
+<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+
+<!-- 按钮组 -->
+<div class='pagebtn'>
+	<input type="button" value='文件上传' id='addfile'/>
+	<form id='fileup' hidden="hidden" action="fileup" enctype="multipart/form-data" method="post">
+		<input type="file" name='file'>
+		<input type="text" id='filename' name='filename'>
+	</form>
+</div>
+<!-- 按钮组结束 -->
+
+<!-- 内容 -->
+<div>
+	<?php if(is_array($content) || $content instanceof \think\Collection || $content instanceof \think\Paginator): $k = 0; $__LIST__ = $content;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?>
+		<span class='content-span'><a href="__MYFILE__/<?php echo $vo['path']; ?>"><?php echo $vo['filename']; ?></a></span>
+	<?php endforeach; endif; else: echo "" ;endif; ?>
+
+</div>
+
+</body>
+<script>
+	// 点击文件上传按钮
+	$('#addfile').click(function(){
+		if($(this).val() == '文件上传'){
+			$('#fileup').css('display','inline-block');
+			$(this).val('提交');
+		}else if($(this).val() == '提交'){
+			var filename = $('#filename').val();
+			if(filename == null || filename == '' || filename == undefined){
+				alert('请输入文件名');
+				return ;
+			}
+			$('#fileup').submit();
+		}
+	});
+</script>
+</html>
