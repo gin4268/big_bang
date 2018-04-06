@@ -22,7 +22,7 @@ class File extends Admin{
     public function fileup(){
         $request=Request::instance()->param();
         $file = request()->file('file');
-        $info = $file->move(ROOT_PATH . 'public' . DS . 'file',$request['filename']);
+        $info = $file->move(ROOT_PATH . 'public' . DS . 'file',iconv("UTF-8", "GB2312", $request['filename']));
         if($info){
             // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
             $data['create_time'] = $_SERVER['REQUEST_TIME'];
