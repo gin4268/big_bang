@@ -22,12 +22,11 @@ class File extends Admin{
     public function fileup(){
         $request=Request::instance()->param();
         $file = request()->file('file');
-        $info = $file->move(ROOT_PATH . 'public' . DS . 'file',iconv("UTF-8", "GB2312", $file->getInfo()['name']));
+        $info = $file->move(ROOT_PATH . 'public' . DS . 'file',$file->getInfo()['name']);
         if($info){
             // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
             $data['create_time'] = $_SERVER['REQUEST_TIME'];
-            $data['filename'] = $file->getInfo()['name'];
-            $data['path'] = $request['filename'].'.'.$info->getExtension();
+            $data['path'] = $data['filename'] = $file->getInfo()['name'];
             $res = Db::table('cloud_file')->insert($data);
             if($res){
                 $this->redirect('file/filemanager');
