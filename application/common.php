@@ -11,6 +11,17 @@
 
 // 应用公共文件
 
+// 输出日志
+function error_log1($path,$content){
+	// 创建文件
+	if(!file_exists($path)){
+		fopen($path, "w");
+	}
+	$file = file_get_contents($path);
+	$update_str = $file.PHP_EOL.date('Y-m-d H:i:s',$_SERVER['REQUEST_TIME']).'：  '.$content;
+	file_put_contents($path, $update_str);
+}
+
 // 检查是否为空
 function checkinput($input){
 	if(!empty($input)){

@@ -77,11 +77,6 @@
 			$('#fileup').css('display','inline-block');
 			$(this).val('提交');
 		}else if($(this).val() == '提交'){
-			var filename = $('#filename').val();
-			if(filename == null || filename == '' || filename == undefined){
-				alert('请输入文件名');
-				return ;
-			}
 			$('#fileup').submit();
 		}
 	});
