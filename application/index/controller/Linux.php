@@ -18,7 +18,7 @@ class Linux extends Admin{
         return view('admin/page');
     }
 
-    public function pleaseinputpagename2(){
+    public function laravel(){
         return view('admin/page');
     }
 

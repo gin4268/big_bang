@@ -3,3 +3,5 @@ composer.lock
 *.log
 
 runtime
+
+log1.txt
