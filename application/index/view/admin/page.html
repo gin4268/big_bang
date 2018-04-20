@@ -71,6 +71,28 @@
 			{/volist}
 		</select>
 	</form>
+	<input type="button" value='移动' id='movebtn'/>
+	<form style='display: inline-block;' id='moveform' action="move" method="post">
+		<select hidden="hidden" name="selectmove" id='selectmove'>
+				<option value="0">---请选择---</option>
+			{volist name="info" id="vo" key="k"}
+				<option value="{$vo.id}">{$vo.title}</option>
+			{/volist}
+		</select>
+		<span id='tomove' hidden="hidden">移动到
+			<select name="tomove" >
+					<option value="0">---请选择---</option>
+				{volist name="menu" id="vo" key="k"}
+					<option value="{$vo.id}">{$vo.name}</option>
+					{notempty name="$vo.data"}
+						{volist name="$vo.data" id="io"}
+							<option value="{$io.id}">----{$io.name}</option>
+						{/volist}
+					{/notempty}
+				{/volist}
+			</select>
+		</span>
+	</form>
 </div>
 <!-- 按钮组结束 -->
 
@@ -308,6 +330,30 @@
 				$('#delform').submit();
 			});
 		}
+	});
+
+	// 文章移动操作
+	$('#movebtn').click(function(event) {
+		if($(this).val() == '取消'){
+			$('#confirmbtn').remove();
+			$('#tomove').remove();
+			$(this).val('删除');
+			$('#selectmove').hide();
+		}else if($(this).val() == '移动'){
+			$('#selectmove').show();
+			$('#moveform').after("<input type='button' value='确定' id='confirmbtn'/>");	
+			$(this).val('取消');
+			// 确定移动操作
+			$('#confirmbtn').click(function(event) {
+				if(!confirm('确定移动吗?')) return ;
+				$('#moveform').submit();
+			});
+		}
+	});
+
+	// 选择移动位置操作
+	$('#moveform').change(function(){
+		$('#tomove').show();
 	});
 
 	// 本地浏览上传图片

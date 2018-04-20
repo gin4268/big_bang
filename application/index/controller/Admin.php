@@ -30,6 +30,21 @@ class Admin extends Controller{
             }
         }
 
+        // 获取目录数据
+        $menu = Db::table('cloud_menu')->order('id')->select();
+        foreach ($menu as $key => $value) {
+            if($value['pid'] == 0){
+                $arr[] = $value;
+            }else{
+                foreach ($arr as $key2 => $value2) {
+                    if($value2['id'] == $value['pid']){
+                        $arr[$key2]['data'][] = $value;
+                    }
+                }
+            }
+        }
+        $this->assign('menu',$arr);
+
     	$this->assign('action',$request->action());
         $this->assign('info',$info);
         $this->assign('pagename',$res['name']);
@@ -140,6 +155,30 @@ class Admin extends Controller{
             $this->success('删除成功');
         }else{
             $this->error('删除失败');
+        }
+    }
+
+    // 移动操作
+    public function move(){
+        $request=Request::instance()->param();
+        if(empty($request['selectmove'])){
+            $this->error('参数错误1');
+        }
+        if(empty($request['tomove'])){
+            $this->error('参数错误2');
+        }
+        // 不能移动到第一层目录
+        $res = Db::table('cloud_menu')->where('id',$request['tomove'])->find();
+        if($res['pid'] == 0){
+            $this->error('不能移动到第一层目录');
+        }
+        $data['menu_id'] = $request['tomove'];
+
+        $res = Db::table('cloud_content')->where('id',$request['selectmove'])->update($data);
+        if($res){
+            $this->success('移动成功');
+        }else{
+            $this->error('移动失败');
         }
     }
 
