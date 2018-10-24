@@ -11,7 +11,7 @@ class kancollection extends Admin{
     }
 
     public function index(){
-    	return view('admin/page');
+    	return view('admin/page_baidu');
     }
 
     public function pleaseinputpagename2(){

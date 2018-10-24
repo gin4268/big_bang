@@ -14,7 +14,7 @@ class Index extends Admin{
     }
 
     public function menu(){
-    	$info = Db::table('cloud_menu')->where('pid',0)->select();
+    	$info = Db::table('cloud_menu')->where('pid',0)->order('sort')->select();
     	$this->assign('info',$info);
     	return view();
     }

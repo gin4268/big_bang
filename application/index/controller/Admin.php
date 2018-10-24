@@ -24,6 +24,7 @@ class Admin extends Controller{
     	$info = Db::table('cloud_content')->where('menu_id',$res['id'])->order('id,sort')->select();
         foreach ($info as $key => $value) {
             $info[$key]['content'] = json_decode(str_replace('&nbsp;',' ',$value['content']));
+            $info[$key]['baidu_content'] = json_decode(str_replace('&nbsp;',' ',$value['baidu_content']));
             // $info[$key]['content'] = json_decode($value['content']);
             if(!empty($value['img'])){
                 $info[$key]['img'] = explode(',', $value['img']);
@@ -186,7 +187,7 @@ class Admin extends Controller{
         $request=Request::instance();
         $control = $request->controller();
         $res = Db::table('cloud_menu')->where('pid',0)->where('control',$control)->find();
-        $info = Db::table('cloud_menu')->where('pid',$res['id'])->where('control',$control)->select();
+        $info = Db::table('cloud_menu')->where('pid',$res['id'])->where('control',$control)->order('sort')->select();
         $this->assign('info',$info);
     }
 
