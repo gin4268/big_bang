@@ -26,7 +26,7 @@ class Sql extends Admin{
         return view('admin/page');
     }
 
-    public function pleaseinputpagename1(){
+    public function mongo(){
         return view('admin/page');
     }
 
@@ -62,7 +62,7 @@ class Sql extends Admin{
         return view('admin/page');
     }
 
-    public function pleaseinputpagename10(){
+    public function mongo0(){
         return view('admin/page');
     }
 

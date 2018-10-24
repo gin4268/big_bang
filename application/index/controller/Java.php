@@ -3,26 +3,26 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Editor extends Admin{
+class Java extends Admin{
 
     public function menu(){
-         parent::menu();
+        parent::menu();
         return view('admin/menu');
     }
 
-    public function used(){
+    public function Use(){
     	return view('admin/page');
     }
 
-    public function eclipse(){
+    public function pleaseinputpagename2(){
     	return view('admin/page');
     }
 
-    public function phpstorm(){
+    public function pleaseinputpagename3(){
     	return view('admin/page');
     }
 
-    public function Mindoc(){
+    public function pleaseinputpagename4(){
     	return view('admin/page');
     }
 

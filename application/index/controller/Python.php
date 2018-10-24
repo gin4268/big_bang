@@ -3,10 +3,10 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Editor extends Admin{
+class python extends Admin{
 
     public function menu(){
-         parent::menu();
+        parent::menu();
         return view('admin/menu');
     }
 
@@ -14,19 +14,19 @@ class Editor extends Admin{
     	return view('admin/page');
     }
 
-    public function eclipse(){
+    public function some(){
     	return view('admin/page');
     }
 
-    public function phpstorm(){
+    public function method(){
     	return view('admin/page');
     }
 
-    public function Mindoc(){
+    public function mistake(){
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename5(){
+    public function spider(){
         return view('admin/page');
     }
 
