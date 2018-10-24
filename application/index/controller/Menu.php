@@ -103,7 +103,7 @@ class Menu extends Admin{
         }
     }
 
-    public function pleaseinputpagename1(){
+    public function sort(){
         return view('admin/page');
     }
 
@@ -139,7 +139,7 @@ class Menu extends Admin{
         return view('admin/page');
     }
 
-    public function pleaseinputpagename10(){
+    public function sort0(){
         return view('admin/page');
     }
 
