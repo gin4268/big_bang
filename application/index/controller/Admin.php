@@ -21,7 +21,7 @@ class Admin extends Controller{
     		'control' => $request->controller(),
     		'action' => $request->action()
     	])->find();
-    	$info = Db::table('cloud_content')->where('menu_id',$res['id'])->order('id,sort')->select();
+    	$info = Db::table('cloud_content')->where('menu_id',$res['id'])->where('is_del',0)->order('sort')->select();
         foreach ($info as $key => $value) {
             $info[$key]['content'] = json_decode(str_replace('&nbsp;',' ',$value['content']));
             $info[$key]['baidu_content'] = json_decode(str_replace('&nbsp;',' ',$value['baidu_content']));

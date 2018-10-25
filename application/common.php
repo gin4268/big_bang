@@ -12,7 +12,7 @@
 // 应用公共文件
 
 // 输出日志
-function error_log1($path,$content){
+function error_log1($path='/big_bang.log',$content){
 	// 创建文件
 	if(!file_exists($path)){
 		fopen($path, "w");

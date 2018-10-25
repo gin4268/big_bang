@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{$pagename}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="__CSS__/my.css">
+
+<script type="text/javascript" src="__JS__/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__JS__/function.js"></script>
+<style>
+	.content{
+		width: 95%;
+		margin:0 auto;
+	}
+	.content-block span{
+		display: inline-block;
+		height: 2rem;
+		line-height: 2rem;
+		width: 10rem;
+	}
+
+	#layer2{
+		display: none;
+	}
+	#layer3{
+		display: none;
+	}
+</style>
+<body>
+	<div name='title' class='top1'>
+		<p class='title1'>{$pagename}</p>
+		<p class='line1'></p>
+	</div>
+
+	<a href="javascript:scrollTo(0,0);" class='totop'>顶部↑</a>
+
+	<div class='content'>
+		<select name="type" id="type">
+			<option value="0">--请选择类型--</option>
+			<option value="1">一级目录</option>
+			<option value="2">二级目录</option>
+			<option value="3">三级内容</option>
+		</select>
+		<select name="layer2" id="layer2">
+			<option value="0">--请选择一级目录--</option>
+		</select>
+		<select name="layer3" id="layer3">
+			<option value="0">--请选择二级目录--</option>
+		</select>
+		<button class='savebtn'>保存</button>
+		<div class='content-block'>
+			
+		</div>
+	</div>
+
+</body>
+<script>
+	
+	var type;  // 记录当前选择层级
+
+	$(function(){
+		initlayer2();
+	});
+
+	// 类型改变事件
+	$('#type').change(function(event) {
+		type = $(this).val();
+		if($(this).val() == 1){
+			showcontent1();
+		}else if($(this).val() == 2){
+			$('#layer2').show();
+		}else if($(this).val() == 3){
+			$('#layer2').show();
+		}
+	});	
+
+	// 二级菜单选择事件
+	$('#layer2').change(function(event) {
+		if(type == 2 && $(this).val() != 0){
+			getlayer2data($(this).val());
+		}else if(type == 3 && $(this).val() != 0){
+			$('#layer3').show();
+			getlayer3select($(this).val());
+		}
+	});	
+
+// 三级菜单选择事件
+	$('#layer3').change(function(event) {
+		if($(this).val() != 0){
+			getlayer3data($(this).val());
+		}
+	});		
+
+	// 一级目录数据按钮事件
+	$(".content-block").on("click",".menu-up", function() {
+		var index = $(this).parent().index();
+		if(index == 0) return ;
+		$(".content-block p").eq(index-1).before($(this).parent().prop("outerHTML"));
+		$(this).parent().remove();
+	});
+	// 一级目录数据按钮事件
+	$(".content-block").on("click",".menu-down", function() {
+		var index = $(this).parent().index();
+		if(index+1 == $(".content-block p").length) return ;
+		$(".content-block p").eq(index+1).after($(this).parent().prop("outerHTML"));
+		$(this).parent().remove();
+	});
+	// 一级目录数据按钮事件
+	$(".content-block").on("click",".menu-up-all", function() {
+		$(".content-block p").eq(0).before($(this).parent().prop("outerHTML"));
+		$(this).parent().remove();
+	});
+	// 一级目录数据按钮事件
+	$(".content-block").on("click",".menu-down-all", function() {
+		$(".content-block p").eq($(".content-block p").length-1).after($(this).parent().prop("outerHTML"));
+		$(this).parent().remove();
+	});
+
+	// 当前目录保存事件
+	$('.savebtn').click(function(event) {
+		var type = $('#type').val();
+		if(type == 0) return;
+		var savearr = [];
+		$(".content-block p").each(function(index,element){
+		    savearr[index] = $(element).attr('data-id');
+		});
+		if(type == 1 || type == 2){
+			$.ajax({
+			    url: "{:url('savemenu')}",
+			    type: 'POST',
+			    data:{
+			    	savemenu:savearr,
+			    },
+			    dataType:'json',
+			    success: function (result) {
+			        if(result.state == 1){
+						alert('保存成功');
+						location.reload();
+					}else{
+						alert(result.msg);
+					}
+			    }
+			});
+		}else if(type == 3){
+			$.ajax({
+			    url: "{:url('savemenu2')}",
+			    type: 'POST',
+			    data:{
+			    	savemenu:savearr,
+			    },
+			    dataType:'json',
+			    success: function (result) {
+			        if(result.state == 1){
+						alert('保存成功');
+						location.reload();
+					}else{
+						alert(result.msg);
+					}
+			    }
+			});
+		}
+	});
+
+	// 获取一级目录数据
+	function showcontent1(){
+		$.ajax({
+		    url: "{:url('searchmessage1')}",
+		    type: 'POST',
+		    dataType:'json',
+		    success: function (result) {
+		        if(result.state == 1){
+					var data = result.data;
+					var html = '';
+					for (var i = 0; i < data.length; i++) {
+						html += "<p data-id='"+data[i].id+"'><span>"+data[i].name+"</span>&nbsp;&nbsp;<button class='menu-up'>上移</button><button class='menu-down'>下移</button><button class='menu-up-all'>上移到顶部</button><button class='menu-down-all'>下移到底部</button></p>";
+					}
+					$('.content-block').html(html);
+				}else{
+					alert(result.msg);
+				}
+		    }
+		});
+	}
+
+	// 获取二级目录数据
+	function getlayer2data(id){
+		$.ajax({
+		    url: "{:url('getlayer2data')}",
+		    type: 'POST',
+		    dataType:'json',
+		    data:{
+		    	pid:id,
+		    },
+		    success: function (result) {
+		        if(result.state == 1){
+					var data = result.data;
+					var html = '';
+					for (var i = 0; i < data.length; i++) {
+						html += "<p data-id='"+data[i].id+"'><span>"+data[i].name+"</span>&nbsp;&nbsp;<button class='menu-up'>上移</button><button class='menu-down'>下移</button><button class='menu-up-all'>上移到顶部</button><button class='menu-down-all'>下移到底部</button></p>";
+					}
+					$('.content-block').html(html);
+				}else{
+					alert(result.msg);
+				}
+		    }
+		});
+	}
+
+	// 获取二级目录数据
+	function getlayer3data(id){
+		$.ajax({
+		    url: "{:url('getlayer3data')}",
+		    type: 'POST',
+		    dataType:'json',
+		    data:{
+		    	pid:id,
+		    },
+		    success: function (result) {
+		        if(result.state == 1){
+					var data = result.data;
+					var html = '';
+					for (var i = 0; i < data.length; i++) {
+						html += "<p data-id='"+data[i].id+"'><span>"+data[i].title+"</span>&nbsp;&nbsp;<button class='menu-up'>上移</button><button class='menu-down'>下移</button><button class='menu-up-all'>上移到顶部</button><button class='menu-down-all'>下移到底部</button></p>";
+					}
+					$('.content-block').html(html);
+				}else{
+					alert(result.msg);
+				}
+		    }
+		});
+	}
+
+	// 初始化二级选择框
+	function initlayer2(){
+		$.ajax({
+		    url: "{:url('searchmessage1')}",
+		    type: 'POST',
+		    dataType:'json',
+		    success: function (result) {
+		        if(result.state == 1){
+		        	var data = result.data;
+		        	var html = '';
+		        	for (var i = 0; i < data.length; i++) {
+		        		html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+		        	}
+		        	$('#layer2').append(html);
+				}else{
+					alert(result.msg);
+				}
+		    }
+		});
+	}
+
+	// 获取三级菜单项用于选择框
+	function getlayer3select(id){
+		$.ajax({
+		    url: "{:url('getlayer2data')}",
+		    type: 'POST',
+		    dataType:'json',
+		    data:{
+		    	pid:id,
+		    },
+		    success: function (result) {
+		        if(result.state == 1){
+		        	var data = result.data;
+		        	var html = '';
+		        	for (var i = 0; i < data.length; i++) {
+		        		html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+		        	}
+		        	$('#layer3').append(html);
+				}else{
+					alert(result.msg);
+				}
+		    }
+		});
+	}
+
+</script>
+</html>
