@@ -14,7 +14,7 @@ class Java extends Admin{
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename2(){
+    public function SpringBoot(){
     	return view('admin/page');
     }
 
