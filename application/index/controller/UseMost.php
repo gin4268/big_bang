@@ -3,18 +3,18 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
     
-class Some extends Admin{
+class UseMost extends Admin{
 
     public function menu(){
         parent::menu();
         return view('admin/menu');
     }
 
-    public function somepython(){
+    public function some(){
     	return view('admin/page');
     }
 
-    public function windows(){
+    public function pleaseinputpagename2(){
     	return view('admin/page');
     }
 

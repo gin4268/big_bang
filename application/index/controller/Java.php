@@ -18,11 +18,11 @@ class Java extends Admin{
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename3(){
+    public function IntelliJ(){
     	return view('admin/page');
     }
 
-    public function pleaseinputpagename4(){
+    public function answer(){
     	return view('admin/page');
     }
 

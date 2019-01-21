@@ -24,7 +24,7 @@ class Amap extends Admin{
         return parent::del();
     }
 
-    public function pleaseinputpagename1(){
+    public function question(){
         return view('admin/page');
     }
 
@@ -60,7 +60,7 @@ class Amap extends Admin{
         return view('admin/page');
     }
 
-    public function pleaseinputpagename10(){
+    public function question0(){
         return view('admin/page');
     }
 }
